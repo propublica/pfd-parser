@@ -10,6 +10,7 @@ const filingPath = __dirname + '/data/';
 const integrityFiling = filingPath + 'Kushner, Jared.pdf',
     fdmFiling = filingPath + 'Donnelly, Sally.pdf',
     fdOnlineFiling = filingPath + 'Mashburn, Lori K.pdf',
+    giftsFiling = filingPath + 'Bryan-Stirling-2026-278ANNU.pdf',
     corruptFiling = filingPath + 'Nesheiwat, Julia  finalEA.pdf';
 
 describe('lib/parser.js', () => {
@@ -44,6 +45,19 @@ describe('lib/parser.js', () => {
         parser(corruptFiling)
             .then((filings) => {
                 filings[0].tables.length.should.equal(0);
+
+                done();
+            });
+    });
+
+    it('should extract gifts and liabilities from example filing', (done) => {
+        parser(giftsFiling)
+            .then((filings) => {
+                filings[0].tables.length.should.equal(8);
+                const gifts = filings[0].tables.find(t => t.name === 'Gifts and Travel Reimbursements');
+                gifts.rows.length.should.equal(1);
+                const liabilities = filings[0].tables.find(t => t.name === 'Liabilities');
+                liabilities.rows.length.should.equal(2);
 
                 done();
             });
