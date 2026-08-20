@@ -17,6 +17,7 @@ program
         _(parser(filingsPath))
             .flatten()
             .flatMap(filing => _(filing.save(dataPath)) )
+            .stopOnError((err) => console.error('[pfd-parser] Fatal error:', err))
             .each(filing => console.log('"' + filing.file + '",' + filing.count))
             .done(() => {});
     });

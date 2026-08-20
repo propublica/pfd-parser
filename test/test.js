@@ -9,7 +9,8 @@ const filingPath = __dirname + '/data/';
 
 const integrityFiling = filingPath + 'Kushner, Jared.pdf',
     fdmFiling = filingPath + 'Donnelly, Sally.pdf',
-    fdOnlineFiling = filingPath + 'Mashburn, Lori K.pdf';
+    fdOnlineFiling = filingPath + 'Mashburn, Lori K.pdf',
+    corruptFiling = filingPath + 'Nesheiwat, Julia  finalEA.pdf';
 
 describe('lib/parser.js', () => {
     it('should find seven tables in Integrity filing', (done) => {
@@ -38,6 +39,13 @@ describe('lib/parser.js', () => {
                 done();
             });
     });
+
+    it('should repair and find zero tables in corrupt PDF', (done) => {
+        parser(corruptFiling)
+            .then((filings) => {
+                filings[0].tables.length.should.equal(0);
+
+                done();
+            });
+    });
 });
-
-
