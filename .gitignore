@@ -1,2 +1,3 @@
 node_modules
-test/data/**/*.csv
+*.csv
+!/test/data/csv/**/*.csv

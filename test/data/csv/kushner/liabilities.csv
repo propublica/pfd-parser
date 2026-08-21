@@ -1,0 +1,14 @@
+file,#,creditor-name,type,amount,year-incurred,rate,term
+"Kushner, Jared",1,Valley National Bank,Unsecured line of credit,"$5,000,001 - $25,000,000",2015,PRIME+0.75%,revolving
+"Kushner, Jared",2,Deutsche Bank,Unsecured line of credit,"$5,000,001 - $25,000,000",2015,LIBOR+2.5%,revolving
+"Kushner, Jared",3,Bank of America,Unsecured line of credit,"$1,000,001 - $5,000,000",2016,LIBOR+2.5%,revolving
+"Kushner, Jared",4,IDB Bank,Unsecured line of credit,"$1,000,001 - $5,000,000",2016,4.5%,revolving
+"Kushner, Jared",5,New York Community Bank,Unsecured line of credit,"$1,000,001 - $5,000,000",2016,PRIME (3.25% F),revolving
+"Kushner, Jared",6,Citi Group,Unsecured line of credit,"$1,000,001 - $5,000,000",2015,LIBOR+2.9%,revolving
+"Kushner, Jared",7,Signature Bank,Unsecured line of credit,"$1,000,001 - $5,000,000",2016,PRIME+0.5% (4% F),revolving
+"Kushner, Jared",8,Investors Savings Bank,Unsecured line of credit,"$1,000,001 - $5,000,000",2015,PRIME (3.25% F),revolving
+"Kushner, Jared",9,Millington Bank,Unsecured line of credit,"$1,000,001 - $5,000,000",2016,PRIME (3.5% F),revolving
+"Kushner, Jared",10,Signature Bank,Secured line of credit,"$1,000,001 - $5,000,000",2016,PRIME+0.5% (4% F),revolving
+"Kushner, Jared",11,Bank of America,Note payable,"$1,000,001 - $5,000,000",2015,LIBOR+2.75%,6/15/2018
+"Kushner, Jared",12,Visa,Credit Card,"$100,001 - $250,000",2008,13.74%,revolving
+"Kushner, Jared",13,Visa,Credit Card,"$15,001 - $50,000",2008,13.74%,revolving

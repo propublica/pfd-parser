@@ -16,7 +16,8 @@ const integrityFiling = filingPath + 'Kushner, Jared.pdf',
     fdmFiling = filingPath + 'Donnelly, Sally.pdf',
     fdOnlineFiling = filingPath + 'Mashburn, Lori K.pdf',
     giftsFiling = filingPath + 'Bryan-Stirling-2026-278ANNU.pdf',
-    corruptFiling = filingPath + 'Nesheiwat, Julia  finalEA.pdf';
+    corruptFiling = filingPath + 'Nesheiwat, Julia  finalEA.pdf',
+    pulteFiling = filingPath + 'Pulte-final278.pdf';
 
 // Converts a table name to the slug used in CSV filenames, matching filing.js logic
 function slugify(name) {
@@ -120,6 +121,16 @@ describe('lib/parser.js', () => {
                 done();
             });
     });
+
+    it('should tables from the pulte filing', (done) => {
+        parser(pulteFiling)
+            .then((filings) => {
+                filings[0].tables.length.should.equal(7);
+
+                done();
+            });
+    });
+
 });
 
 describe('data: Donnelly, Sally.pdf', () => {
@@ -158,6 +169,26 @@ describe('data: Mashburn, Lori K.pdf', () => {
             const table = findTableForCsv(filing, csvFile);
             expect(table).to.exist;
             compareTableToCSV(table, csvPath + 'mashburn/' + csvFile);
+        });
+    });
+});
+
+describe.skip('data: Pulte William J.  final278.pdf', () => {
+    let filing;
+
+    before(function(done) {
+        this.timeout(8000);
+        parser(pulteFiling).then((filings) => {
+            filing = filings[0];
+            done();
+        });
+    });
+
+    csvFilesIn(csvPath + 'pulte').forEach((csvFile) => {
+        it('should match reference data for ' + csvFile, () => {
+            const table = findTableForCsv(filing, csvFile);
+            expect(table).to.exist;
+            compareTableToCSV(table, csvPath + 'pulte/' + csvFile);
         });
     });
 });
