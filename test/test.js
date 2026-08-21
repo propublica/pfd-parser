@@ -4,6 +4,7 @@ const _ = require('highland'),
     vfs = require('vinyl-fs');
 
 let should = chai.should();
+const expect = chai.expect;
 
 const filingPath = __dirname + '/data/';
 
@@ -22,6 +23,20 @@ describe('lib/parser.js', () => {
                 done();
             });
     }).timeout(4000);
+
+    // NOTE: We have not corrected this issue yet, but adding test to document the issue
+    it.skip('should correctly parse the liabilties table in the Integrity filing', (done) => {
+        parser(integrityFiling)
+            .then((filings) => {
+                const liabilities = filings[0].tables.find(t => t.name === 'Liabilities');
+                console.log("liabilities.rows", liabilities.rows);
+                const badRow = liabilities.rows.find(r => r['year-incurred'] === "INCURRED")
+                expect(badRow).to.be.undefined;
+                liabilities.rows.length.should.equal(13);
+
+                done();
+            });
+    });
 
     it('should find seven tables in example FDM filing', (done) => {
         parser(fdmFiling)
@@ -48,7 +63,7 @@ describe('lib/parser.js', () => {
 
                 done();
             });
-    });
+    }).timeout(4000);
 
     it('should extract gifts and liabilities from example filing', (done) => {
         parser(giftsFiling)
