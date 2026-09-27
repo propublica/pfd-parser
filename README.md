@@ -3,7 +3,7 @@ Parses public financial disclosure data from OGE form 278e.
 ## Installation
 
 ```sh
-npm i -g github:publici/pfd-parser
+npm i -g github:propublica/pfd-parser
 ```
 
 ## Usage
